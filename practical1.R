@@ -10,6 +10,42 @@ gene_freq<-function(N11,N12,N22){
   print(paste(p,"=p",q,'=q',f11,'=f11',f12,'=f12',f22,'=f22'));
   }
 gene_freq(1787,3037,1305)
+#function for N numbers
+install.packages('rlist')
+library(rlist)
+
+Ngen_greq <- function(L,n){
+  N=0
+  for (i in L){
+    N=N+i
+  }
+  #print(N)
+  fallel = vector("list")
+  step = 1
+  while (step<=length(L)){
+    #print(L[[step]])
+    p = (L[[step]]/N)
+    c(fallel,sqrt(p))
+    print(sqrt(p))
+    #print(step)
+    step=step+n
+  }
+  
+  print("next print")
+  
+  freq = vector("list")
+  for (j in L){
+    w = (j/N)
+    c(freq,w)
+    print(w)
+  }
+  print(freq)
+  print(fallel)
+  
+}
+
+Ngen_greq(list(1787,3037,1305),2)
+Ngen_greq(list(1787,3037,1305,1234,2343,3325,1567,2235,3321),3)
 
 #MENDELIAN POPULATION
 #RANDOM MATING -HWE
