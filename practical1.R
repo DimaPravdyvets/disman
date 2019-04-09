@@ -8,7 +8,7 @@ gene_freq<-function(N11,N12,N22){
   f12=N11/N;
   f22=N22/N;
   print(paste(p,"=p",q,'=q',f11,'=f11',f12,'=f12',f22,'=f22'));
-  }
+}
 gene_freq(1787,3037,1305)
 #function for N numbers
 install.packages('rlist')
@@ -20,33 +20,45 @@ Ngen_greq <- function(L,n){
     N=N+i
   }
   #print(N)
-  fallel = vector("list")
+  falafel = vector("list")
   step = 1
   while (step<=length(L)){
     #print(L[[step]])
     p = (L[[step]]/N)
-    c(fallel,sqrt(p))
-    print(sqrt(p))
+    falafel=c(falafel,sqrt(p))
+    #print(sqrt(p))
     #print(step)
     step=step+n
   }
   
-  print("next print")
+  #print("next print")
   
   freq = vector("list")
   for (j in L){
     w = (j/N)
-    c(freq,w)
-    print(w)
+    freq=c(freq,w)
+    #print(w)
   }
-  print(freq)
-  print(fallel)
+  #print(do.call(sum,freq))
+  #print(do.call(sum,fallel))
+  print(Reduce('+',freq))
+  print(Reduce('+',falafel))
+  print(paste(freq))
+  print("next print")
+  print(paste(falafel))
   
 }
-
 Ngen_greq(list(1787,3037,1305),2)
 Ngen_greq(list(1787,3037,1305,1234,2343,3325,1567,2235,3321),3)
+Ngen_greq(list(1787,3037,1305,1234,2343,3325,1567,2235,3321,3254,1458,2541,4444,4565,1211,1111),4)
 
+
+?Reduce()
+
+
+k=list()
+k=c(k,5)
+k
 #MENDELIAN POPULATION
 #RANDOM MATING -HWE
 #One-gene two-alleles (X1 and X2). Genotypes: X11, X12 and X22
