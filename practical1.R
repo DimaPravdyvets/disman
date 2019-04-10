@@ -14,51 +14,46 @@ gene_freq(1787,3037,1305)
 install.packages('rlist')
 library(rlist)
 
+
+#input should be in this format: (list(N11,N12,N13,N1N,N21,N22,N23,N2N,ETC),#of alleles)
+#remembre that 12 and 21 is the same, so in case you need to, just divide those combinations by 2
+
+
 Ngen_greq <- function(L,n){
   N=0
   for (i in L){
     N=N+i
   }
-  #print(N)
   falafel = vector("list")
   step = 1
   while (step<=length(L)){
-    #print(L[[step]])
     p = (L[[step]]/N)
     falafel=c(falafel,sqrt(p))
-    #print(sqrt(p))
-    #print(step)
-    step=step+n
+    step=step+n+1
   }
-  
-  #print("next print")
-  
   freq = vector("list")
   for (j in L){
     w = (j/N)
     freq=c(freq,w)
-    #print(w)
   }
   #print(do.call(sum,freq))
   #print(do.call(sum,fallel))
-  print(Reduce('+',freq))
-  print(Reduce('+',falafel))
+  print(paste("Sum of frequencies: ",Reduce('+',freq)))
+  print(paste("sum of alleles :",Reduce('+',falafel)))
+  print("frequencies :")
   print(paste(freq))
-  print("next print")
+  print("alleles :")
   print(paste(falafel))
   
 }
-Ngen_greq(list(1787,3037,1305),2)
-Ngen_greq(list(1787,3037,1305,1234,2343,3325,1567,2235,3321),3)
-Ngen_greq(list(1787,3037,1305,1234,2343,3325,1567,2235,3321,3254,1458,2541,4444,4565,1211,1111),4)
+Ngen_greq(list(1787,3037/2,3037/2,1305),2)
+Ngen_greq(list(1787,3037/2,1305/2,1234/2,2343,3325/2,1567,2235/2,3321),3)
+Ngen_greq(list(1787,3037/2,1305/2,1234/2,2343/2,3325,1567/2,2235/2,3321/2,3254,1458/2,2541/2,4444/2,4565/2,1211/2,1111),4)
+Ngen_greq(list(11,12/2,13/2,14/2,15/2,21/2,22,23/2,24/2,25/2,31/2,32/2,33,34/2,35/2,41/2,42/2,43/2,44,45/2,51/2,52/2,53/2,54/2,55),5)
 
 
-?Reduce()
 
 
-k=list()
-k=c(k,5)
-k
 #MENDELIAN POPULATION
 #RANDOM MATING -HWE
 #One-gene two-alleles (X1 and X2). Genotypes: X11, X12 and X22
